@@ -1,0 +1,20 @@
+{
+  "name": "online-store",
+  "version": "1.0.0",
+  "description": "Online-store to practice concepts learned during web-development bootcamp.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Rafiu Animashaun",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mongodb": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
