@@ -1,0 +1,69 @@
+Date : 2024-05-23 23:33:20
+Directory : /Users/Rvfiu/Development/100-days-of-code/online-store
+Total : 26 files,  1574 codes, 0 comments, 62 blanks, all 1636 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          2 |      1,320 |          0 |          2 |      1,322 |
+| CSS        |          3 |        102 |          0 |         20 |        122 |
+| HTML       |         12 |         94 |          0 |          9 |        103 |
+| JavaScript |          8 |         56 |          0 |         30 |         86 |
+| Markdown   |          1 |          2 |          0 |          1 |          3 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                              | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                 |         26 |      1,574 |          0 |         62 |      1,636 |
+| . (Files)                                                                                         |          4 |      1,339 |          0 |         11 |      1,350 |
+| controllers                                                                                       |          1 |         15 |          0 |          4 |         19 |
+| data                                                                                              |          1 |         17 |          0 |          7 |         24 |
+| model                                                                                             |          4 |          0 |          0 |          4 |          4 |
+| public                                                                                            |          3 |        102 |          0 |         20 |        122 |
+| public/styles                                                                                     |          3 |        102 |          0 |         20 |        122 |
+| routes                                                                                            |          1 |          7 |          0 |          7 |         14 |
+| views                                                                                             |         12 |         94 |          0 |          9 |        103 |
+| views (Files)                                                                                     |          3 |          0 |          0 |          3 |          3 |
+| views/admin                                                                                       |          1 |          0 |          0 |          1 |          1 |
+| views/customer                                                                                    |          8 |         94 |          0 |          5 |         99 |
+| views/customer/auth                                                                               |          2 |         71 |          0 |          0 |         71 |
+| views/customer/cart                                                                               |          1 |          0 |          0 |          1 |          1 |
+| views/customer/includes                                                                           |          3 |         23 |          0 |          2 |         25 |
+| views/customer/products                                                                           |          2 |          0 |          0 |          2 |          2 |
++---------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                          | language   | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/Rvfiu/Development/100-days-of-code/online-store/README.md                                  | Markdown   |          2 |          0 |          1 |          3 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/app.js                                     | JavaScript |         17 |          0 |          8 |         25 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/controllers/auth-controller.js             | JavaScript |         15 |          0 |          4 |         19 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/data/database.js                           | JavaScript |         17 |          0 |          7 |         24 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/model/cart.js                              | JavaScript |          0 |          0 |          1 |          1 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/model/order.js                             | JavaScript |          0 |          0 |          1 |          1 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/model/product.js                           | JavaScript |          0 |          0 |          1 |          1 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/model/user.js                              | JavaScript |          0 |          0 |          1 |          1 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/package-lock.json                          | JSON       |      1,300 |          0 |          1 |      1,301 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/package.json                               | JSON       |         20 |          0 |          1 |         21 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/public/styles/auth.css                     | CSS        |         19 |          0 |          3 |         22 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/public/styles/base.css                     | CSS        |         66 |          0 |         15 |         81 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/public/styles/forms.css                    | CSS        |         17 |          0 |          2 |         19 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/routes/auth-routes.js                      | JavaScript |          7 |          0 |          7 |         14 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/401.ejs                              | HTML       |          0 |          0 |          1 |          1 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/500.ejs                              | HTML       |          0 |          0 |          1 |          1 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/admin/admin.ejs                      | HTML       |          0 |          0 |          1 |          1 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/customer/auth/login.ejs              | HTML       |         22 |          0 |          0 |         22 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/customer/auth/signup.ejs             | HTML       |         49 |          0 |          0 |         49 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/customer/cart/shopping-cart.ejs      | HTML       |          0 |          0 |          1 |          1 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/customer/includes/footer.ejs         | HTML       |          2 |          0 |          0 |          2 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/customer/includes/head.ejs           | HTML       |         15 |          0 |          1 |         16 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/customer/includes/header.ejs         | HTML       |          6 |          0 |          1 |          7 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/customer/products/product-detail.ejs | HTML       |          0 |          0 |          1 |          1 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/customer/products/products.ejs       | HTML       |          0 |          0 |          1 |          1 |
+| /Users/Rvfiu/Development/100-days-of-code/online-store/views/orders.ejs                           | HTML       |          0 |          0 |          1 |          1 |
+| Total                                                                                             |            |      1,574 |          0 |         62 |      1,636 |
++---------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
