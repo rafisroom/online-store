@@ -1,5 +1,5 @@
 const User = require("../model/user-model");
-const authUtil = require("../util/authentication")
+const authUtil = require("../util/authentication");
 
 const express = require("express");
 
@@ -19,7 +19,7 @@ async function signup(req, res) {
 
   await user.signup();
 
-  res.redirect('/login')
+  res.redirect("/login");
 }
 
 function getLogin(req, res) {
@@ -27,24 +27,29 @@ function getLogin(req, res) {
 }
 
 async function login(req, res) {
-  const user = new User(req.body.email, req.body.password)
+  const user = new User(req.body.email, req.body.password);
   const existingUser = await user.getUserWithSameEmail();
 
-  if(!existingUser) {
-    res.redirect('/login')
+  if (!existingUser) {
+    res.redirect("/login");
     return;
   }
 
-  const passwordIsCorrect = await user.passwordsMatch(existingUser.password)
+  const passwordIsCorrect = await user.passwordsMatch(existingUser.password);
 
   if (!passwordIsCorrect) {
-    res.redirect('/login')
+    res.redirect("/login");
     return;
   }
 
-  authUtil.createUserSession(req, existingUser, function() {
-    res.redirect('/');
-  })
+  authUtil.createUserSession(req, existingUser, function () {
+    res.redirect("/");
+  });
+}
+
+function logout(req, res) {
+  authUtil.destroyUserAuthSession(req);
+  res.redirect("/login");
 }
 
 module.exports = {
@@ -52,4 +57,5 @@ module.exports = {
   getLogin: getLogin,
   signup: signup,
   login: login,
+  logout: logout,
 };

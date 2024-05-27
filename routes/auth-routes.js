@@ -12,4 +12,6 @@ router.get("/login", authContoller.getLogin);
 
 router.post("/login", authContoller.login);
 
+router.post("/logout", authContoller.logout);
+
 module.exports = router;
