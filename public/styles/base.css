@@ -11,7 +11,7 @@ html {
   --color-gray-400: rgb(83, 83, 83);
   --color-gray-500: rgb(33, 33, 33);
   --color-gray-600: rgb(26, 23, 23);
-  --color-gray-600: rgb(18, 18, 18);
+  --color-gray-700: rgb(18, 18, 18);
 
   --color-primary-50: rgb(225, 236, 227);
   --color-primary-100: rgb(189, 226, 196);
@@ -25,7 +25,7 @@ html {
   --color-error-100: rgb(255, 192, 180);
   --color-error-500: rgb(199, 51, 15);
 
-  --color-primary-500-bg: rgb(35, 39, 35);
+  --color-primary-500-bg: rgb(60, 68, 60);
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
