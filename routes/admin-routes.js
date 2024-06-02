@@ -13,6 +13,6 @@ router.post('/beats', imageUploadMiddleware, adminController.createNewBeat)
 
 router.get('/beats/:id', adminController.getUpdateBeat )
 
-router.post('/beats/:id', adminController.updateBeat )
+router.post('/beats/:id', imageUploadMiddleware, adminController.updateBeat )
 
 module.exports = router;

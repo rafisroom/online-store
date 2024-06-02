@@ -5,11 +5,12 @@
     <%- include('../../shared/includes/header') %>
     <main>
         <h1>Add new Beat</h1>
-           <%- include('includes/beat-form', {submitPath: 'admin/beats', beat: {
+           <%- include('includes/beat-form', {submitPath: '/admin/beats', beat: {
             title: "",
             summary: "",
             price: "",
             description: ""
-           }}) %>
+           },
+           imageRequired: true }) %>
     </main>
 <%- include('../../shared/includes/footer') %>

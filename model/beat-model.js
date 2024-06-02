@@ -1,8 +1,6 @@
-// const { get } = require('http');
-const mongodb = require("mongodb");
+const { ObjectId } = require("mongodb");
 
 const db = require("../data/database");
-
 class Beat {
   constructor(beatData) {
     this.title = beatData.title;
@@ -10,22 +8,20 @@ class Beat {
     this.price = beatData.price;
     this.description = beatData.description;
     this.image = beatData.image; // name of the image file
-    this.imagePath = `beat-data/images/${beatData.image}`;
-    this.imageUrl = `/beats/assets/images/${beatData.image}`;
+    this.updateImageData();
     if (beatData._id) {
       this.id = beatData._id.toString();
     }
   }
 
   static async findById(beatId) {
-   let beId;
+    let beId;
     try {
-     beId = mongodb.ObjectId.createFromHexString(beatId); // note difference between beId and beatId
-   } catch (error) {
-    error.code = 404;
-    throw (error);
-   }
-   
+      beId = ObjectId.createFromHexString(beatId); // note difference between beId and beatId
+    } catch (error) {
+      error.code = 404;
+      throw error;
+    }
     const beat = await db.getDb().collection("beats").findOne({ _id: beId });
 
     if (!beat) {
@@ -33,7 +29,7 @@ class Beat {
       error.code = 404;
       throw error;
     }
-    return beat;
+    return new Beat(beat);
   }
 
   static async findAll() {
@@ -42,6 +38,11 @@ class Beat {
     return beats.map(function (beatDocument) {
       return new Beat(beatDocument);
     });
+  }
+
+  updateImageData() {
+    this.imagePath = `beat-data/images/${this.image}`;
+    this.imageUrl = `/beats/assets/images/${this.image}`;
   }
 
   async save() {
@@ -53,7 +54,25 @@ class Beat {
       image: this.image,
     };
 
-    await db.getDb().collection("beats").insertOne(beatData);
+    if (this.id) {
+      const beatId = ObjectId.createFromHexString(this.id);
+
+      if (!this.image) {
+        delete beatData.image;
+      }
+
+      await db
+        .getDb()
+        .collection("beats")
+        .updateOne({ _id: beatId }, { $set: beatData });
+    } else {
+      await db.getDb().collection("beats").insertOne(beatData);
+    }
+  }
+
+  replaceImage(newImage) {
+    this.image = newImage;
+    this.updateImageData();
   }
 }
 

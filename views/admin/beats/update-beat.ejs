@@ -5,6 +5,6 @@
     <%- include('../../shared/includes/header') %>
     <main>
         <h1>Update Beat</h1>
-        <%- include('includes/beat-form', {submitPath: 'admin/beats/' + beat.id, beat: beat}) %>
+        <%- include('includes/beat-form', {submitPath: '/admin/beats/' + beat.id, beat: beat, imageRequired: false}) %>
     </main>
 <%- include('../../shared/includes/footer') %>

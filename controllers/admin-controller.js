@@ -10,7 +10,7 @@ async function getBeats(req, res, next) {
   }
 }
 
-async function getNewBeat(req, res) {
+function getNewBeat(req, res) {
   res.render("admin/beats/new-beat");
 }
 
@@ -33,12 +33,31 @@ async function createNewBeat(req, res, next) {
 async function getUpdateBeat(req, res, next) {
   try {
     const beat = await Beat.findById(req.params.id);
-    res.render('admin/beats/update-beat', {beat: beat})
+    res.render("admin/beats/update-beat", { beat: beat });
   } catch (error) {
     next(error);
   }
 }
-function updateBeat() {}
+
+async function updateBeat(req, res, next) {
+    const beat = new Beat({
+    ...req.body,
+    _id: req.params.id,
+  });
+
+  if (req.file) {
+    beat.replaceImage(req.file.filename);
+  }
+
+  try {
+    await beat.save();
+  } catch (error) {
+    next(error);
+    return;
+  }
+
+  res.redirect("/admin/beats");
+}
 
 module.exports = {
   getBeats: getBeats,
