@@ -1,0 +1,10 @@
+<%- include('../../shared/includes/head', {pageTitle: 'Update Beat'})  %>
+<link rel="stylesheet" href="/styles/forms.css">
+</head>
+<body>
+    <%- include('../../shared/includes/header') %>
+    <main>
+        <h1>Update Beat</h1>
+        <%- include('includes/beat-form', {submitPath: 'admin/beats/' + beat.id, beat: beat}) %>
+    </main>
+<%- include('../../shared/includes/footer') %>
