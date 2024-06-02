@@ -20,6 +20,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static("public"));
+app.use('/beats/assets' ,express.static("beat-data"));
 app.use(express.urlencoded({ extended: false }));
 
 const sessionConfig = createSessionConfig();

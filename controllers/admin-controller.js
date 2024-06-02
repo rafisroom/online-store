@@ -1,11 +1,17 @@
 const Beat = require("../model/beat-model");
 
-function getBeats(req, res) {
-  res.render("admin/beats/all-beats");
+async function getBeats(req, res, next) {
+    try {
+        const beats = await Beat.findAll();  
+        res.render("admin/beats/all-beats", {beats: beats});
+    } catch (error) {
+        next(error);
+        return;
+    }
 }
 
-function getNewBeat(req, res) {
-  res.render("admin/beats/new-beat");
+async function getNewBeat(req, res) {
+res.render("admin/beats/new-beat");
 }
 
 async function createNewBeat(req, res, next) {
