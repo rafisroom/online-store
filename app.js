@@ -9,10 +9,11 @@ const db = require("./data/database");
 const addCSRFTokenMiddleware = require("./middleware/csrf-token");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 const checkAuthStatusMiddleware = require("./middleware/check-auth");
+const protectRoutesMiddlewate = require("./middleware/protect-routes");
 const authRoutes = require("./routes/auth-routes");
 const beatsRoutes = require("./routes/beats-routes");
 const baseRoutes = require("./routes/base-routes");
-const adminRoutes = require('./routes/admin-routes')
+const adminRoutes = require("./routes/admin-routes");
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static("public"));
-app.use('/beats/assets' ,express.static("beat-data"));
+app.use("/beats/assets", express.static("beat-data"));
 app.use(express.urlencoded({ extended: false }));
 
 const sessionConfig = createSessionConfig();
@@ -34,7 +35,8 @@ app.use(checkAuthStatusMiddleware);
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(beatsRoutes);
-app.use('/admin', adminRoutes);
+app.use(protectRoutesMiddlewate);
+app.use("/admin", adminRoutes);
 
 app.use(errorHandlerMiddleware);
 
