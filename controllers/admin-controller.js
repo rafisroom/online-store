@@ -1,4 +1,4 @@
-const Beat = require("../model/beat-model");
+const Beat = require("../models/beat-model");
 
 async function getBeats(req, res, next) {
   try {
