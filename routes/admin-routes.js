@@ -15,4 +15,6 @@ router.get('/beats/:id', adminController.getUpdateBeat )
 
 router.post('/beats/:id', imageUploadMiddleware, adminController.updateBeat )
 
+router.delete('/beats/:id', adminController.deleteBeat)
+
 module.exports = router;

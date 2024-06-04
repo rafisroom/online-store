@@ -40,7 +40,7 @@ async function getUpdateBeat(req, res, next) {
 }
 
 async function updateBeat(req, res, next) {
-    const beat = new Beat({
+  const beat = new Beat({
     ...req.body,
     _id: req.params.id,
   });
@@ -59,10 +59,23 @@ async function updateBeat(req, res, next) {
   res.redirect("/admin/beats");
 }
 
+async function deleteBeat(req, res, next) {
+  try {
+    beat = await Beat.findById(req.params.id);
+    await beat.remove();
+  } catch (error) {
+    next(error);
+    return;
+  }
+
+  res.json({message: 'Deleted beat!'});
+}
+
 module.exports = {
   getBeats: getBeats,
   getNewBeat: getNewBeat,
   createNewBeat: createNewBeat,
   getUpdateBeat: getUpdateBeat,
   updateBeat: updateBeat,
+  deleteBeat: deleteBeat,
 };

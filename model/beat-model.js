@@ -74,6 +74,11 @@ class Beat {
     this.image = newImage;
     this.updateImageData();
   }
+
+  async remove() {
+    const beatId = ObjectId.createFromHexString(this.id)
+    await db.getDb().collection('beats').deleteOne({_id: beatId});
+  }
 }
 
 module.exports = Beat;
