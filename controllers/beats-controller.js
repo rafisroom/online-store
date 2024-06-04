@@ -10,15 +10,12 @@ async function getAllBeats(req, res, next) {
 }
 
 async function getBeatDetails(req, res, next) {
-  
   try {
     const beat = await Beat.findById(req.params.id);
-    res.render('customer/beats/beat-detail', {beat: beat})    
+    res.render('customer/beats/beat-detail', { beat: beat })    
   } catch (error) {
     next(error);
   }
-
-
 }
 
 module.exports = {

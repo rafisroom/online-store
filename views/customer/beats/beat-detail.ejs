@@ -1,5 +1,6 @@
-<%- include('../../shared/includes/head', {pageTitle: 'Beats'})  %>
+<%- include('../../shared/includes/head', {pageTitle: beat.title})  %>
 <link rel="stylesheet" href="/styles/beats.css">
+<script src="/scripts/cart-mgmt.js" defer></script>
 </head>
 <body>
     <%- include('../../shared/includes/header') %>
@@ -9,7 +10,7 @@
             <div id="beat-info">
                 <h1><%= beat.title %></h1>
                 <p>$<%= beat.price %></p>
-                <button>Add to Cart</button>
+                <button class="btn" data-beatid="<%= beat.id %>" data-csrf="<%= locals.csrfToken %>">Add to Cart</button>
             </div>
         </header>
 

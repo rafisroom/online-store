@@ -15,6 +15,7 @@ const authRoutes = require("./routes/auth-routes");
 const beatsRoutes = require("./routes/beats-routes");
 const baseRoutes = require("./routes/base-routes");
 const adminRoutes = require("./routes/admin-routes");
+const cartRoutes = require("./routes/cart-routes");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 app.use("/beats/assets", express.static("beat-data"));
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 const sessionConfig = createSessionConfig();
 
@@ -38,6 +40,7 @@ app.use(checkAuthStatusMiddleware);
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(beatsRoutes);
+app.use("/cart", cartRoutes);
 app.use(protectRoutesMiddlewate);
 app.use("/admin", adminRoutes);
 
