@@ -1,9 +1,16 @@
 <%- include('../../shared/includes/head', {pageTitle: 'Beats'})  %>
+<link rel="stylesheet" href="/styles/beats.css">
 </head>
 <body>
     <%- include('../../shared/includes/header') %>
     <main>
         <h1>All Beats</h1>
-        <p>Feed me rappers or feed me beats.</p>
+        <ol id="beats-grid">
+            <% for (const beat of beats) { %>
+                <li>
+                    <%- include('../../shared/includes/beat-item', { beat: beat} )%>
+                </li>
+            <% } %>
+        </ol>
     </main>
 <%- include('../../shared/includes/footer') %>

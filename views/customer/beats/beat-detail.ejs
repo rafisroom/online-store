@@ -1,0 +1,18 @@
+<%- include('../../shared/includes/head', {pageTitle: 'Beats'})  %>
+<link rel="stylesheet" href="/styles/beats.css">
+</head>
+<body>
+    <%- include('../../shared/includes/header') %>
+    <main id="beat-details">
+        <header>
+            <img src="<%= beat.imageUrl %>" alt="<%= beat.title %>">
+            <div id="beat-info">
+                <h1><%= beat.title %></h1>
+                <p>$<%= beat.price %></p>
+                <button>Add to Cart</button>
+            </div>
+        </header>
+
+        <p id="beat-description"><%= beat.description %></p>
+    </main>
+<%- include('../../shared/includes/footer') %>

@@ -14,5 +14,4 @@ router.get('/403', function(req, res) {
     res.status(403).render('shared/403')
 })
 
-
 module.exports = router;
