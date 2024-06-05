@@ -1,4 +1,5 @@
 const Beat = require("../models/beat-model");
+const Order = require('../models/order-model'); 
 
 async function getBeats(req, res, next) {
   try {
@@ -71,6 +72,34 @@ async function deleteBeat(req, res, next) {
   res.json({message: 'Deleted beat!'});
 }
 
+async function getOrders(req, res, next) {
+  try {
+    const orders = await Order.findAll();
+    res.render('admin/orders/admin-orders', {
+      orders: orders
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function updateOrder(req, res, next) {
+  const orderId = req.params.id;
+  const newStatus = req.body.newStatus;
+
+  try {
+    const order = await Order.findById(orderId);
+
+    order.status = newStatus;
+
+    await order.save();
+
+    res.json({ message: 'Order updated', newStatus: newStatus });
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   getBeats: getBeats,
   getNewBeat: getNewBeat,
@@ -78,4 +107,6 @@ module.exports = {
   getUpdateBeat: getUpdateBeat,
   updateBeat: updateBeat,
   deleteBeat: deleteBeat,
+  getOrders: getOrders,
+  updateOrder: updateOrder
 };

@@ -1,6 +1,7 @@
 const { ObjectId } = require("mongodb");
 
 const db = require("../data/database");
+
 class Beat {
   constructor(beatData) {
     this.title = beatData.title;
@@ -22,18 +23,38 @@ class Beat {
       error.code = 404;
       throw error;
     }
-    const beat = await db.getDb().collection("beats").findOne({ _id: beId });
+    const beat = await db
+    .getDb()
+    .collection("beats")
+    .findOne({ _id: beId });
 
     if (!beat) {
       const error = new Error("Could not find beat with provided id.");
       error.code = 404;
       throw error;
     }
+
     return new Beat(beat);
   }
 
   static async findAll() {
     const beats = await db.getDb().collection("beats").find().toArray();
+
+    return beats.map(function (beatDocument) {
+      return new Beat(beatDocument);
+    });
+  }
+
+  static async findMultiple(ids) {
+    const beatIds = ids.map(function(id) {
+      return ObjectId.createFromHexString(id);
+    })
+    
+    const beats = await db
+      .getDb()
+      .collection('beats')
+      .find({ _id: { $in: beatIds } })
+      .toArray();
 
     return beats.map(function (beatDocument) {
       return new Beat(beatDocument);
@@ -49,7 +70,7 @@ class Beat {
     const beatData = {
       title: this.title,
       summary: this.summary,
-      price: +this.price,
+      price: this.price,
       description: this.description,
       image: this.image,
     };
@@ -76,8 +97,8 @@ class Beat {
   }
 
   async remove() {
-    const beatId = ObjectId.createFromHexString(this.id)
-    await db.getDb().collection('beats').deleteOne({_id: beatId});
+    const beatId = ObjectId.createFromHexString(this.id);
+    await db.getDb().collection("beats").deleteOne({ _id: beatId });
   }
 }
 

@@ -1,8 +1,53 @@
+const Beat = require('./beat-model');
+
 class Cart {
   constructor(items = [], totalQuantity = 0, totalPrice = 0) {
     this.items = items;
     this.totalQuantity = totalQuantity;
     this.totalPrice = totalPrice;
+  }
+
+  async updatePrices() {
+    const beatIds = this.items.map(function (item) {
+      return item.beat.id;
+    });
+
+    const beats = await Beat.findMultiple(beatIds);
+
+    const deletableCartItemBeatIds = [];
+
+    for (const cartItem of this.items) {
+      const beat = beats.find(function (prod) {
+        return prod.id === cartItem.beat.id;
+      });
+
+      if (!beat) {
+        // beat was deleted!
+        // "schedule" for removal from cart
+        deletableCartItemBeatIds.push(cartItem.beat.id);
+        continue;
+      }
+
+      // beat was not deleted
+      // set beat data and total price to latest price from database
+      cartItem.beat = beat;
+      cartItem.totalPrice = cartItem.quantity * cartItem.beat.price;
+    }
+
+    if (deletableCartItemBeatIds.length > 0) {
+      this.items = this.items.filter(function (item) {
+        return deletableCartItemBeatIds.indexOf(item.beat.id) < 0;
+      });
+    }
+
+    // re-calculate cart totals
+    this.totalQuantity = 0;
+    this.totalPrice = 0;
+
+    for (const item of this.items) {
+      this.totalQuantity = this.totalQuantity + item.quantity;
+      this.totalPrice = this.totalPrice + item.totalPrice;
+    }
   }
 
   addItem(beat) {
