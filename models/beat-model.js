@@ -6,7 +6,7 @@ class Beat {
   constructor(beatData) {
     this.title = beatData.title;
     this.summary = beatData.summary;
-    this.price = beatData.price;
+    this.price = +beatData.price;
     this.description = beatData.description;
     this.image = beatData.image; // name of the image file
     this.updateImageData();
