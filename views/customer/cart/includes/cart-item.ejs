@@ -1,0 +1,11 @@
+<article class="cart-item">
+    <div class="cart-item-info">
+      <h2><%= item.beat.title %></h2>
+      <p>$<span class="cart-item-price"><%= item.totalPrice.toFixed(2) %></span> <span class="cart-beat-price">($<%= item.beat.price.toFixed(2) %>)</span></p>
+    </div>
+  
+    <form class="cart-item-mgmt" data-beatid="<%= item.beat.id %>" data-csrf="<%= locals.csrfToken %>">
+      <input type="number" value="<%= item.quantity %>" required>
+      <button class="btn btn-alt">Update</button>
+    </form>
+  </article>
