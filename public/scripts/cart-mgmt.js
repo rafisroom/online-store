@@ -1,5 +1,5 @@
 const addToCartButtonElement = document.querySelector("#beat-details button");
-const cartBadgeElement = document.querySelector(".nav-items .badge");
+const cartBadgeElements = document.querySelectorAll(".nav-items .badge");
 
 async function addToCart() {
   const beatId = addToCartButtonElement.dataset.beatid;
@@ -31,7 +31,9 @@ async function addToCart() {
 
   const newTotalQuantity = responseData.newTotalItems;
 
-  cartBadgeElement.textContent = newTotalQuantity;
+  for (const cartBadgeElement of cartBadgeElements) {
+    cartBadgeElement.textContent = newTotalQuantity;
+  }
 }
 
 addToCartButtonElement.addEventListener("click", addToCart);
